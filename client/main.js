@@ -15,12 +15,22 @@ containerComponent.addComponents(header, alertComponent);
 
 rootHtmlElement.append(containerComponent.htmlElement);
 
+const handleGuestDelete = async (id) => {
+  try {
+    await ApiServises.deleteGuests(id);
+    const guests = await ApiServises.getGuests();
+    guestListTable.renderGuests(guests);
+  } catch (error) {
+    alertComponent.show(error.message);
+  }
+};
+
 (async () => {
   try {
     const guests = await ApiServises.getGuests();
-    guestListTable = new GuestListTable(guests);
-
+    guestListTable = new GuestListTable(guests, handleGuestDelete);
     containerComponent.addComponents(guestListTable);
+
     console.log("all good");
     console.table(guests);
   } catch (error) {

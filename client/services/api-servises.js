@@ -7,8 +7,19 @@ const getGuests = async () => {
   return guests;
 };
 
-const ApiServises = {
-  getGuests,
+const deleteGuests = async (id) => {
+  const response = await fetch(`${serverAddress}/guests/${id}`, {
+    method: "DELETE",
+  });
+  const guests = await response.json();
+
+  return guests;
 };
 
+const ApiServises = {
+  getGuests,
+  deleteGuests,
+};
+
+// deleteGuests("1");
 export default ApiServises;

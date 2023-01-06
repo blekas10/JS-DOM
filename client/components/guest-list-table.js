@@ -1,8 +1,9 @@
 class GuestListTable {
   htmlElement;
   tbody;
+  onDelete;
 
-  constructor(guests) {
+  constructor(guests, onDelete) {
     this.htmlElement = document.createElement("table");
     this.htmlElement.className = "table table-success table-striped";
     this.htmlElement.innerHTML = `
@@ -18,9 +19,10 @@ class GuestListTable {
         <tbody></tbody>`;
     this.tbody = this.htmlElement.querySelector("tbody");
     this.renderGuests(guests);
+    this.onDelete = onDelete;
   }
 
-  renderRow({ id, name, surname, vegan }) {
+  renderRow = ({ id, name, surname, vegan }) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${id}</td>
@@ -32,20 +34,16 @@ class GuestListTable {
       </td> `;
 
     const deleteBtn = tr.querySelector(".btn-danger");
-    deleteBtn.addEventListener("click", () => {
-      console.log(`trinamas elementas ${id}`);
-    });
+    deleteBtn.addEventListener("click", () => this.onDelete(id));
 
     return tr;
-  }
+  };
 
   renderGuests(guests) {
     const guestRowHtmlElement = guests.map(this.renderRow);
 
     this.tbody.innerHTML = null;
     this.tbody.append(...guestRowHtmlElement);
-
-    // const deleteBtn = this.
   }
 }
 

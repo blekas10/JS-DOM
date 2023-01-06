@@ -22,5 +22,25 @@
   <body>
     <!-- Cis bus patalpinta visa su JS sugeneruota aplikacija -->
     <div id="root"></div>
+    <form class="shadow p-5">
+      <h2 class="text-uppercase text-center">Pridėti svečią</h2>
+      <div class="mb-3">
+        <label for="name" class="form-label">Vardas</label>
+        <input type="text" class="form-control" id="name" />
+      </div>
+      <div class="mb-3">
+        <label for="surname" class="form-label">Pavardė</label>
+        <input type="text" class="form-control" id="surname" />
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="vegan" />
+        <label class="form-check-label" for="vegan"
+          >Reikalingas veganiškas meniu?</label
+        >
+      </div>
+      <div class="text-end">
+        <button type="submit" class="btn btn-primary px-4">Pridėti</button>
+      </div>
+    </form>
   </body>
 </html>
