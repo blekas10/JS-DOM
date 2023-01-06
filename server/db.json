@@ -1,0 +1,28 @@
+{
+  "guests": [
+    {
+      "id": 1,
+      "name": "Serbentautas",
+      "surname": "Bordiūras",
+      "vegan": false
+    },
+    {
+      "id": 2,
+      "name": "Gintas",
+      "surname": "Bordiūras",
+      "vegan": true
+    },
+    {
+      "id": 3,
+      "name": "Vaflis",
+      "surname": "Adomaitis",
+      "vegan": false
+    },
+    {
+      "id": 4,
+      "name": "Kuilys Siparis",
+      "surname": "Serbis",
+      "vegan": true
+    }
+  ]
+}
