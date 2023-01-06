@@ -15,10 +15,24 @@ const deleteGuests = async (id) => {
 
   return guests;
 };
+const createGuest = async (guestProps) => {
+  const response = await fetch(`${serverAddress}/guests`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+    },
+    body: JSON.stringify(guestProps),
+  });
+  const guests = await response.json();
+
+  return guests;
+};
 
 const ApiServises = {
   getGuests,
   deleteGuests,
+  createGuest,
 };
 
 // deleteGuests("1");

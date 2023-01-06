@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Frederikas",
       "surname": "Bordiūras",
-      "vegan": true
+      "vegan": false
     },
     {
       "id": 2,
@@ -23,6 +23,24 @@
       "name": "Kuilys Siparis",
       "surname": "Serbis",
       "vegan": true
+    },
+    {
+      "name": "tesd",
+      "surname": "tesd",
+      "vegan": true,
+      "id": 5
+    },
+    {
+      "name": "asd",
+      "surname": "asd",
+      "vegan": true,
+      "id": 6
+    },
+    {
+      "name": "asd",
+      "surname": "asd",
+      "vegan": false,
+      "id": 7
     }
   ]
 }
