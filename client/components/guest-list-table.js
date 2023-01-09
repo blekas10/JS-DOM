@@ -29,8 +29,9 @@ class GuestListTable {
       <td>${name}</td>
       <td>${surname}</td>
       <td>${vegan}</td>
-      <td class="d-flex justify-content-end">
+      <td class="d-flex justify-content-end gap-2">
         <button class="btn btn-sm btn-danger">✕</button>
+        <button class="btn btn-sm btn-warning">↻</button>
       </td> `;
 
     const deleteBtn = tr.querySelector(".btn-danger");
