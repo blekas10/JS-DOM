@@ -10,6 +10,8 @@ const rootHtmlElement = document.querySelector("#root");
 
 let guestListTable;
 let guestFormComponent;
+let guests;
+let editedRowID = null;
 
 const containerComponent = new ContainerComponent();
 const alertComponent = new AlertComponent();
@@ -23,8 +25,8 @@ rootHtmlElement.append(containerComponent.htmlElement);
 const handleGuestDelete = async (id) => {
   try {
     await ApiServises.deleteGuests(id);
-    const guests = await ApiServises.getGuests();
-    guestListTable.renderGuests(guests);
+    guests = await ApiServises.getGuests();
+    guestListTable.renderGuests(guests, editedRowID);
   } catch (error) {
     alertComponent.show(error.message);
   }
@@ -32,18 +34,43 @@ const handleGuestDelete = async (id) => {
 const handleGuestCreate = async (guestProps) => {
   try {
     await ApiServises.createGuest(guestProps);
-    const guests = await ApiServises.getGuests();
-    guestListTable.renderGuests(guests);
+    guests = await ApiServises.getGuests();
+    guestListTable.renderGuests(guests, editedRowID);
+  } catch (error) {
+    alertComponent.show(error.message);
+  }
+};
+const handleGuestUpdate = async (guestProps) => {
+  try {
+    await ApiServises.updateGuest(guestProps);
+    guests = await ApiServises.getGuests();
+    guestListTable.renderGuests(guests, editedRowID);
   } catch (error) {
     alertComponent.show(error.message);
   }
 };
 
+const handleGuestEdit = (guestProps) => {
+  if (editedRowID === guestProps.id) editedRowID = null;
+  else editedRowID = guestProps.id;
+  guestListTable.renderGuests(guests, editedRowID);
+
+  if (editedRowID === null) {
+    guestFormComponent.disableEditing();
+  } else {
+    guestFormComponent.enableEditing(guestProps);
+  }
+};
+
 (async () => {
   try {
-    const guests = await ApiServises.getGuests();
+    guests = await ApiServises.getGuests();
     guestFormComponent = new GuestFormComponent(handleGuestCreate);
-    guestListTable = new GuestListTable(guests, handleGuestDelete);
+    guestListTable = new GuestListTable(
+      guests,
+      handleGuestDelete,
+      handleGuestEdit
+    );
     const flexContainerComponent = new FlexContainerComponent();
     flexContainerComponent.addComponents(guestFormComponent, guestListTable);
     containerComponent.addComponents(flexContainerComponent);

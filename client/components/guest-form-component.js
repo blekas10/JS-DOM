@@ -1,6 +1,11 @@
 class GuestFormComponent {
   htmlElement;
   onSubmit;
+  nameInput;
+  surnameInput;
+  veganInput;
+  formName;
+  submitBtn;
 
   constructor(onSubmit) {
     this.htmlElement = document.createElement("form");
@@ -22,10 +27,15 @@ class GuestFormComponent {
       >
     </div>
     <div class="text-end">
-      <button type="submit" class="btn btn-primary px-4">Pridėti</button>
+      <button type="submit" class="btn btn-success px-4">Pridėti</button>
     </div>
   `;
     this.onSubmit = onSubmit;
+    this.nameInput = this.htmlElement.querySelector("[name=name]");
+    this.surnameInput = this.htmlElement.querySelector("[name=surname]");
+    this.veganInput = this.htmlElement.querySelector("[name=vegan]");
+    this.formName = this.htmlElement.querySelector("h2");
+    this.submitBtn = this.htmlElement.querySelector("button");
 
     this.htmlElement.addEventListener("submit", this.handleSubmit);
   }
@@ -39,6 +49,21 @@ class GuestFormComponent {
       vegan: Boolean(formData.get("vegan")),
     };
     this.onSubmit(values);
+  };
+
+  enableEditing = ({ name, surname, vegan }) => {
+    this.nameInput.value = name;
+    this.surnameInput.value = surname;
+    this.veganInput.checked = vegan;
+    this.formName.innerText = "Update Car";
+    this.submitBtn.innerText = "Update car";
+    this.submitBtn.className = "btn btn-warning w-100";
+  };
+
+  disableEditing = () => {
+    this.htmlElement.reset();
+    this.formName.innerText = "Create Car";
+    this.submitBtn.className = "btn btn-success w-100";
   };
 }
 
