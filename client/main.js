@@ -35,6 +35,7 @@ const handleGuestCreate = async (guestProps) => {
   try {
     await ApiServises.createGuest(guestProps);
     guests = await ApiServises.getGuests();
+
     guestListTable.renderGuests(guests, editedRowID);
   } catch (error) {
     alertComponent.show(error.message);
@@ -42,8 +43,10 @@ const handleGuestCreate = async (guestProps) => {
 };
 const handleGuestUpdate = async (guestProps) => {
   try {
-    await ApiServises.updateGuest(guestProps);
+    await ApiServises.updateGuest(editedRowID, guestProps);
     guests = await ApiServises.getGuests();
+    editedRowID = null;
+    guestFormComponent.disableEditing();
     guestListTable.renderGuests(guests, editedRowID);
   } catch (error) {
     alertComponent.show(error.message);
@@ -57,8 +60,10 @@ const handleGuestEdit = (guestProps) => {
 
   if (editedRowID === null) {
     guestFormComponent.disableEditing();
+    guestFormComponent.onSubmit = handleGuestCreate;
   } else {
     guestFormComponent.enableEditing(guestProps);
+    guestFormComponent.onSubmit = handleGuestUpdate;
   }
 };
 

@@ -27,7 +27,7 @@ class GuestFormComponent {
       >
     </div>
     <div class="text-end">
-      <button type="submit" class="btn btn-success px-4">Pridėti</button>
+      <button type="submit" class="btn btn-success">Pridėti</button>
     </div>
   `;
     this.onSubmit = onSubmit;
@@ -45,25 +45,26 @@ class GuestFormComponent {
     const formData = new FormData(event.target);
     const values = {
       name: formData.get("name"),
-      surname: formData.get("name"),
+      surname: formData.get("surname"),
       vegan: Boolean(formData.get("vegan")),
     };
     this.onSubmit(values);
+    event.target.reset();
   };
 
   enableEditing = ({ name, surname, vegan }) => {
     this.nameInput.value = name;
     this.surnameInput.value = surname;
     this.veganInput.checked = vegan;
-    this.formName.innerText = "Update Car";
-    this.submitBtn.innerText = "Update car";
-    this.submitBtn.className = "btn btn-warning w-100";
+    this.formName.innerText = "Readaguoti svečią";
+    this.submitBtn.innerText = "Readaguoti svečią";
+    this.submitBtn.className = "btn btn-warning";
   };
 
   disableEditing = () => {
     this.htmlElement.reset();
-    this.formName.innerText = "Create Car";
-    this.submitBtn.className = "btn btn-success w-100";
+    this.formName.innerText = "Pridėti svečią";
+    this.submitBtn.className = "btn btn-success";
   };
 }
 

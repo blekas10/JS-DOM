@@ -25,15 +25,15 @@
       "vegan": true
     },
     {
-      "name": "Frederikas",
-      "surname": "Frederikas",
-      "vegan": true,
+      "name": "asd",
+      "surname": "Pavardenis",
+      "vegan": false,
       "id": 5
     },
     {
-      "name": "Frederikas",
-      "surname": "Frederikas",
-      "vegan": true,
+      "name": "aaaa",
+      "surname": "Pavardenis",
+      "vegan": false,
       "id": 6
     }
   ]

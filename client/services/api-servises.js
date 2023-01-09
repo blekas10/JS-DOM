@@ -28,11 +28,25 @@ const createGuest = async (guestProps) => {
 
   return guests;
 };
+const updateGuest = async (id, guestProps) => {
+  const response = await fetch(`${serverAddress}/guests/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+    },
+    body: JSON.stringify(guestProps),
+  });
+  const guests = await response.json();
+
+  return guests;
+};
 
 const ApiServises = {
   getGuests,
   deleteGuests,
   createGuest,
+  updateGuest,
 };
 
 // deleteGuests("1");
