@@ -1,12 +1,6 @@
 {
   "guests": [
     {
-      "id": 1,
-      "name": "Frederikas",
-      "surname": "Bordiūras",
-      "vegan": false
-    },
-    {
       "id": 2,
       "name": "Gintas",
       "surname": "Bordiūras",
@@ -35,12 +29,6 @@
       "surname": "asd",
       "vegan": true,
       "id": 6
-    },
-    {
-      "name": "asd",
-      "surname": "asd",
-      "vegan": false,
-      "id": 7
     }
   ]
 }
